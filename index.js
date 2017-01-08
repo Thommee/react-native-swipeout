@@ -181,6 +181,12 @@ const Swipeout = React.createClass({
       else this.props.scroll(true);
     }
     if (this.state.swiping) {
+      
+       if (posX == 0 && posY == 0) {
+          var onPress = this.props.onPress;
+          if (onPress) onPress();
+       }
+      
       //  move content to reveal swipeout
       if (posX < 0 && this.props.right) this.setState({ contentPos: Math.min(posX, 0) });
       else if (posX > 0 && this.props.left) this.setState({ contentPos: Math.max(posX, 0) });
